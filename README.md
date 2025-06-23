@@ -84,3 +84,14 @@ igps/
 
 ## 👤 Maintainer
 Bernardt Bouillon
+
+## For a all in one script
+git clone https://github.com/BernardtB/igps
+mkdir website
+cd igps
+docker build --no-cache -t igps .
+docker run -d \
+  --name igps-core \
+  -p 8081:80 \
+  --mount type=bind,source="$(pwd)/../test2",target=/var/www/html \
+  igps
