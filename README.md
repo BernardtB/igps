@@ -89,9 +89,9 @@ Bernardt Bouillon
 git clone https://github.com/BernardtB/igps
 mkdir website
 cd igps
-docker build --no-cache -t igps .
+docker build --no-cache -t igps-php7.3.33-nginx-fpm-v1 .
 docker run -d \
   --name igps-core \
   -p 8081:80 \
-  --mount type=bind,source="$(pwd)/../test2",target=/var/www/html \
-  igps
+  --mount type=bind,source="$(pwd)/../website",target=/var/www/html \
+  igps-php7.3.33-nginx-fpm-v1
