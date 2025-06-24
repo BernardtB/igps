@@ -87,9 +87,13 @@ Bernardt Bouillon
 
 ## For a all in one script
 git clone https://github.com/BernardtB/igps
+
 mkdir website
+
 cd igps
+
 docker build --no-cache -t igps-php7.3.33-nginx-fpm-v1 .
+
 docker run -d \
   --name igps-core \
   -p 8081:80 \
