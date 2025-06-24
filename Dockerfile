@@ -63,5 +63,15 @@ RUN mkdir -p /tmp/sessions && \
 # Expose port 80 for Nginx
 EXPOSE 80
 
+# Create the logs directory and set permissions
+RUN mkdir -p /var/www/html/logs && \
+    chown -R www-data:www-data /var/www/html/logs && \
+    chmod -R 775 /var/www/html/logs
+
+# Set permissions for the entire application directory to be safe (read-only for Nginx, write for PHP where needed)
+RUN chown -R www-data:www-data /var/www/html && \
+    find /var/www/html -type d -exec chmod 775 {} + && \
+    find /var/www/html -type f -exec chmod 664 {} +
+
 # Command to run Supervisor when the container starts
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
