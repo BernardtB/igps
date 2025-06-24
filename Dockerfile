@@ -56,6 +56,12 @@ COPY supervisor/supervisord.conf /etc/supervisord.conf
 # application code is within the 'app/' directory in your build context.
 # COPY app/ /var/www/html/
 
+# Create necessary directories and set correct permissions
+RUN mkdir -p /var/www/html/temp/sessions && \
+    chown -R www-data:www-data /var/www/html/temp && \
+    chmod -R 775 /var/www/html/temp
+
+
 # Expose port 80 for Nginx
 EXPOSE 80
 
