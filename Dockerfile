@@ -1,5 +1,5 @@
-# Use an official PHP-FPM 7.3 image as the base
-FROM php:7.3-fpm-alpine
+# Use an official PHP-FPM 7.3.13 image as the base
+FROM php:7.3.13-fpm-alpine
 
 # Set working directory inside the container
 WORKDIR /var/www/html
